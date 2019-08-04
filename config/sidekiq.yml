@@ -1,0 +1,6 @@
+#:logfile: ./log/sidekiq.log
+
+:schedule:
+  hello_world_worker:
+    cron: '0 * * * * *'   # Runs once per minute
+    class: HelloWorldWorker
