@@ -19,4 +19,9 @@ class PokemonsController < ApplicationController
     redirect_to pokemons_path
   end
 
+  def clean_up
+   # GuestsCleanupJob.perform_later("guest")
+    GuestsCleanupJob.set(wait: 10.second).perform_later("guest")
+    redirect_to pokemons_path
+  end
 end
